@@ -156,3 +156,6 @@ for seed in range(seed_count):
 
     # 9. Save the model for this seed
     model.save_pretrained(model_save_path)
+    
+    # Clear circular reference to prevent memory leaks
+    model.model_card_data.trainer = None
